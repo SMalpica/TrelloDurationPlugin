@@ -1,0 +1,25 @@
+{
+  "name": "Trello Duration Plugin",
+  "url": "https://smalpica.github.io/TrelloDurationPlugin/",
+  "capabilities": {
+    "card-buttons": [
+      {
+        "text": "Duración",
+        "callback": "showDuration"
+      }
+    ],
+    "card-back-section": {
+      "title": "Duración",
+      "icon": "./clock-icon.png",
+      "content": {
+        "type": "iframe",
+        "url": "./index.html",
+        "height": 300
+      }
+    }
+  },
+  "connectors": {},
+  "authorization": {
+    "type": "none"
+  }
+}
