@@ -2,15 +2,6 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Time Tracker Power-Up</title>
-  <script src="https://p.trellocdn.com/power-up.min.js"></script>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 1em;<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
   <title>Time Tracker</title>
   <style>
     body {
@@ -27,79 +18,14 @@
   </style>
 </head>
 <body>
-  <h2>Time Tracker</h2>
+  <h2>Gestión de tiempo</h2>
   <button id="start">Iniciar tiempo</button>
   <button id="stop">Detener tiempo</button>
   <div id="summary"></div>
+
   <script src="https://p.trellocdn.com/power-up.min.js"></script>
   <script>
     const t = TrelloPowerUp.iframe();
-    const STORAGE_KEY = 'time-tracking-sessions';
-
-    async function loadSessions() {
-      return await t.get('card', 'shared', STORAGE_KEY) || [];
-    }
-
-    async function saveSessions(sessions) {
-      return await t.set('card', 'shared', STORAGE_KEY, sessions);
-    }
-
-    async function updateSummary() {
-      const sessions = await loadSessions();
-      let totalMinutes = 0;
-      const listItems = sessions.map(s => {
-        const start = new Date(s.start);
-        const end = s.end ? new Date(s.end) : new Date();
-        const minutes = Math.round((end - start) / 60000);
-        totalMinutes += minutes;
-        return `<li>${start.toLocaleString()} - ${s.end ? end.toLocaleString() : '...'} (${minutes} min)</li>`;
-      });
-      document.getElementById('summary').innerHTML = `
-        <p><strong>Total:</strong> ${totalMinutes} minutos</p>
-        <ul>${listItems.join('')}</ul>
-      `;
-    }
-
-    document.getElementById('start').addEventListener('click', async () => {
-      const sessions = await loadSessions();
-      if (sessions.length > 0 && !sessions[sessions.length - 1].end) return;
-      sessions.push({ start: new Date().toISOString() });
-      await saveSessions(sessions);
-      updateSummary();
-    });
-
-    document.getElementById('stop').addEventListener('click', async () => {
-      const sessions = await loadSessions();
-      const last = sessions[sessions.length - 1];
-      if (last && !last.end) {
-        last.end = new Date().toISOString();
-        await saveSessions(sessions);
-        updateSummary();
-      }
-    });
-
-    updateSummary();
-  </script>
-</body>
-</html>
-
-    }
-    button {
-      margin: 0.5em 0;
-      padding: 0.5em 1em;
-    }
-    ul {
-      padding-left: 1.2em;
-    }
-  </style>
-</head>
-<body>
-  <h2>Time Tracker</h2>
-  <button id="start">Iniciar tiempo</button>
-  <button id="stop">Detener tiempo</button>
-  <div id="summary"></div>
-  <script>
-
     const STORAGE_KEY = 'time-tracking-sessions';
 
     async function loadSessions() {
