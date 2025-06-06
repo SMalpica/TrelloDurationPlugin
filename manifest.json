@@ -4,19 +4,10 @@
   "capabilities": {
     "card-buttons": [
       {
-        "text": "Duración",
-        "callback": "showDuration"
+        "text": "Gestionar tiempo",
+        "callback": "showTimeTracker"
       }
-    ],
-    "card-back-section": {
-      "title": "Duración",
-      "icon": "./clock-icon.png",
-      "content": {
-        "type": "iframe",
-        "url": "./index.html",
-        "height": 300
-      }
-    }
+    ]
   },
   "connectors": {},
   "authorization": {
