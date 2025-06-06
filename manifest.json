@@ -5,7 +5,7 @@
     "card-buttons": [
       {
         "text": "Gestionar tiempo",
-        "callback": "showTimeTracker"
+        "callback": "card-buttons"
       }
     ]
   },
